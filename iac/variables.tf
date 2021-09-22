@@ -1,6 +1,3 @@
-variable network {
-}
-
 variable "eks_cluster_name" {
 }
 
