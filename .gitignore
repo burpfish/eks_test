@@ -23,6 +23,7 @@ gradle/
 .terraform/
 **/*.hcl
 **/*.tfstate
+**/*.info
 
 **/token.txt
 **/test_service.yml
