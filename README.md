@@ -14,17 +14,17 @@
 
 5. Run terraform to deploy the cluster etc.  
 ```./1_deploy_cluster.sh```  
-If this is the first time in a new cluster, enter Access Key, Secret Access key from your a cloud guru sandbox  
+*If this is the first time in a new cluster, enter Access Key, Secret Access key from your a cloud guru sandbox  
 If the very first time, enter 'us-east-1' for region  
-(If the values have not changed since the previous run, just hit enter)  
+(If the values have not changed since the previous run, just hit enter)*  
 
 6. Deploy the dashboard  
 ```./2_deploy_dashboard.sh```  
-Hit http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login to load it  
-Paste in the token from token.txt
+*Hit http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login to load it  
+Paste in the token from token.txt*
 
 7. Switch to another terminal  
-We leave kubectl proxy running in the previous script; it's required for the dashboard
+*We leave kubectl proxy running in the previous script; it's required for the dashboard.*
 
 8. Deploy the autoscaler  
 ```./3_deploy_autoscaler.sh```
