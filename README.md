@@ -13,7 +13,7 @@
 ```./0_clean_up.sh```
 
 5. Run terraform to deploy the cluster etc.  
-```./1_deploy_cluster.sh```
+```./1_deploy_cluster.sh```  
 If this is the first time in a new cluster, enter Access Key, Secret Access key from your a cloud guru sandbox  
 If the very first time, enter 'us-east-1' for region  
 (If the values have not changed since the previous run, just hit enter)  
