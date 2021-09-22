@@ -2,7 +2,6 @@
 https://learn.acloud.guru/cloud-playground/cloud-sandboxes
 
 # Build and containerize the service if it's changed
-gradle build
 ./build_service.sh
 
 cd iac
