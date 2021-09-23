@@ -36,8 +36,12 @@ Paste in the token from token.txt*
 ```
 kubectl get all -A
 kubectl get all -n test-namespace
-kubectl scale deployment test-deployment --replicas 40 -n test-namespace
+kubectl scale deployment test-deployment --replicas 1 -n test-namespace
 kubectl logs <pod-name> -n test-namespace'''
 kubectl autoscale deployment test-deployment --cpu-percent=50 --min=1 --max=10  -n test-namespace
 kubectl describe hpa -n test-namespace
+kubectl describe deploy -n test-namespace
+kubectl api-versions
+kubectl get hpa test-autoscale -o yaml
+kubectl describe hpa.v2beta2.autoscaling test-autoscale
 ```

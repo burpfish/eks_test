@@ -10,7 +10,7 @@ public class TestServiceApplication {
 	private static final Logger logger = LoggerFactory.getLogger(TestServiceApplication.class);
 
 	public static void main(String[] args) {
-		logger.info("Version 1");
+		logger.info("Version 3");
 		SpringApplication.run(TestServiceApplication.class, args);
 	}
 }

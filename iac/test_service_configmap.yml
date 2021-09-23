@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: test-app-configmap
+  namespace: test-namespace
+data:
+  application.yaml: |-
+    app:
+      config:
+        busy: true
