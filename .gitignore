@@ -23,7 +23,7 @@ build/
 gradle/
 .terraform/
 **/*.hcl
-**/*.tfstate
+**/*.tfstate*
 **/*.info
 
 **/token.txt
