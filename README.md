@@ -1,5 +1,6 @@
 # Setup cluster in EKS
 
+## Setup
 1. Create an AWS sandbox in a cloud guru  
   https://learn.acloud.guru/cloud-playground/cloud-sandboxes
 
@@ -29,29 +30,59 @@ Paste in the token from token.txt*
 8. Deploy the autoscaler  
 ```./3_deploy_autoscaler.sh```
 
-9. Deploy the service  
-```./4_deploy_test_service.sh```
+9. Deploy Helm (only used for Rabbit atm)  
+```./7_deploy_helm.sh```
+
+## To test autoscaling
+1. Go through setup (above)
+
+
+2. Deploy the test service
+ ```./4_deploy_test_service.sh```
+   
+
+3. Deploy an autoscaler, one of:  
+   ```./5a_deploy_v1_autoscale```  
+   ```./5b_deploy_beta_autoscale.sh```
+   
+
+4. Make the service busy, check scale up:  
+   ```./6a_start_busy.sh```
+
+
+4. Make the service busy, check scale down:  
+   ```./6b_stop_busy.sh```
+
+## To test keda
+1. Go through setup (above)
+   
+
+2. Deploy Keda  
+```./8_deploy_keda.sh```
+
+   
+3. Either test with scheduled schema (cron)   
+```./9a_deploy_keda_scheduled.sh```  
+Or with Rabbit:  
+```./9b_deploy_keda_rabbit.sh```   
+```./9c_keda_rabbit_cleanup.sh```
 
 ### Some useful commands:
 ```
-kubectl get all -A
-kubectl get all -n test-namespace
-kubectl scale deployment test-deployment --replicas 1 -n test-namespace
-kubectl logs <pod-name> -n test-namespace'''
+# View autoscaler:
+kubectl describe hpa.v2beta2.autoscaling test-autoscale -n test-namespace
+
+# Autoscaler v1 via command line
 kubectl autoscale deployment test-deployment --cpu-percent=50 --min=1 --max=10  -n test-namespace
-kubectl describe hpa -n test-namespace
-kubectl describe deploy -n test-namespace
-kubectl api-versions
-kubectl get hpa test-autoscale -o yaml
-kubectl describe hpa.v2beta2.autoscaling test-autoscale
 
-kubectl delete hpa test-autoscale -n test-namespace
-kubectl scale deployment test-deployment --replicas 1 -n test-namespace
+# Clean up
+kubectl delete namespace test-namespace
 
-
+# Set cluster to explicit size
+REPLICAS=10 
 kubectl get hpa.v2beta2.autoscaling test-autoscale -n test-namespace -o yaml > test.yaml
 kubectl delete hpa test-autoscale -n test-namespace
-kubectl scale deployment test-deployment --replicas 3 -n test-namespace
+kubectl scale deployment test-deployment --replicas $REPLICAS -n test-namespace
 kubectl apply -f test.yaml
 
 
