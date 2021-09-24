@@ -10,6 +10,6 @@ spec:
     - type: cron
       metadata:
         timezone: Europe/London
-        start: 0 * * * *
-        end: 10 * * * *
+        start: "*/5 * * * *"
+        end: "*/10 * * * *"
         desiredReplicas: "50"
