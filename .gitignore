@@ -17,6 +17,7 @@
 *.iws
 
 
+**/get_helm.sh
 build/
 .gradle/
 gradle/
