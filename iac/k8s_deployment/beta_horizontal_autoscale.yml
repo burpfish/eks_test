@@ -9,19 +9,19 @@ spec:
     kind: Deployment
     name: test-deployment
   minReplicas: 1
-  maxReplicas: 25
+  maxReplicas: 50
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 10
+          averageUtilization: 2
   behavior:
     scaleUp:
       policies:
-        - type: Pods
-          value: 10
+        - type: Percent
+          value: 10000
           periodSeconds: 1
     scaleDown:
       policies:

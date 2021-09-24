@@ -44,4 +44,15 @@ kubectl describe deploy -n test-namespace
 kubectl api-versions
 kubectl get hpa test-autoscale -o yaml
 kubectl describe hpa.v2beta2.autoscaling test-autoscale
+
+kubectl delete hpa test-autoscale -n test-namespace
+kubectl scale deployment test-deployment --replicas 1 -n test-namespace
+
+
+kubectl get hpa.v2beta2.autoscaling test-autoscale -n test-namespace -o yaml > test.yaml
+kubectl delete hpa test-autoscale -n test-namespace
+kubectl scale deployment test-deployment --replicas 3 -n test-namespace
+kubectl apply -f test.yaml
+
+
 ```

@@ -33,10 +33,10 @@ sudo unzip -d /opt/gradle /tmp/gradle-${VERSION}-bin.zip
 sudo ln -s /opt/gradle/gradle-${VERSION} /opt/gradle/latest
 
 # For now create manually
-nano /etc/profile.d/gradle.sh
+sudo nano /etc/profile.d/gradle.sh
 # Add these lines to the file:
-#export GRADLE_HOME=/opt/gradle/latest
-#export PATH=${GRADLE_HOME}/bin:${PATH}
+export GRADLE_HOME=/opt/gradle/latest
+export PATH=${GRADLE_HOME}/bin:${PATH}
 
 sudo chmod +x /etc/profile.d/gradle.sh
 source /etc/profile.d/gradle.sh
